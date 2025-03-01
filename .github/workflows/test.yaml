@@ -20,6 +20,9 @@ jobs:
 
       - name: Build
         run: go build -v ./...
+        if: success()
 
       - name: Test
         run: go test -v ./...
+        if: success()
+      
