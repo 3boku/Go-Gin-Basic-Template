@@ -19,6 +19,11 @@ func NewCmd() {
 		router: router.NewRouter(db),
 	}
 
+	err = database.Migration(db)
+	if err != nil {
+		panic(err)
+	}
+
 	c.router.SetupRoutes()
 	err = c.router.ServerStart()
 	if err != nil {
