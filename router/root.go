@@ -36,7 +36,7 @@ func (r *Router) SetupRoutes() {
 	product := r.Engine.Group("/product")
 	{
 		product.POST("", r.ProductHandler.Insert)
-		product.PUT("/:id", r.ProductHandler.Update)
+		product.PATCH("/:id", r.ProductHandler.Update)
 		product.DELETE("/:id", r.ProductHandler.Delete)
 		product.GET("", r.ProductHandler.GetAll)
 		product.GET("/:id", r.ProductHandler.GetByID)
