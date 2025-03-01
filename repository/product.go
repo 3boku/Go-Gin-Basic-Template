@@ -65,7 +65,7 @@ func (r *ProductRepository) GetAll() (product *[]types.Product, err error) {
 	return product, nil
 }
 
-func (r *ProductRepository) GetByID(id string) (product *[]types.Product, err error) {
+func (r *ProductRepository) GetByID(id string) (product *types.Product, err error) {
 	if err = r.DB.Where("id =?", id).Find(&product).Error; err != nil {
 		return nil, err
 	}
