@@ -69,6 +69,9 @@ func (r *ProductRepository) GetByID(id string) (product *types.Product, err erro
 	if err = r.DB.Where("id =?", id).Find(&product).Error; err != nil {
 		return nil, err
 	}
+	if !product.DeleteAt.Valid {
+		return nil, gorm.ErrRecordNotFound
+	}
 
 	return product, nil
 }
